@@ -1,0 +1,7 @@
+<ul>
+    <li *ngFor="let quote of quotes$ | async" (click)="showQuoteDetails(quote)">
+        <button (click)="toggleToEditMode(quote)">Modifier</button>
+        <button (click)="deleteQuote(quote)">Supprimer</button>
+        {{ quote.text }}
+    </li>
+</ul>
