@@ -1,4 +1,9 @@
-li:hover {
-    cursor: pointer;
-    color: pink;
+li:hover, .mat-list-item:hover {
+    color: #fff;
+    background-color: #91CDFE;
 }
+
+.mat-list-item {
+    cursor: pointer;
+}
+

@@ -1,13 +1,22 @@
 <div>
-    <form [formGroup]='form' (ngSubmit)="saveQuote()">
-        <input type="text" formControlName="firstname" placeholder="Prénom de l'auteur"><br>
-        <input type="text" formControlName="lastname" placeholder="Nom de l'auteur"><br>
-        <textarea formControlName="quote" cols="30" rows="10" placeholder="Votre citation"></textarea><br>
-        <button>{{ verb }}</button>
-        <button *ngIf='isInEditMode' (click)='cancelEdit()'>Annuler</button>
+    <form [formGroup]='form' (ngSubmit)="saveQuote()" *ngIf="active">
+        <mat-form-field>
+            <input matInput type="text" formControlName="firstname" placeholder="Prénom de l'auteur"><br>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <input matInput type="text" formControlName="lastname" placeholder="Nom de l'auteur">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <textarea matInput formControlName="quote" cols="30" rows="10" placeholder="Votre citation"></textarea>
+        </mat-form-field>
+        <br>
+        <button mat-raised-button color="primary">{{ verb }}</button>
+        <button mat-raised-button color="link" *ngIf='isInEditMode' (click)='cancelEdit()'>Annuler</button>
     </form>
 </div>
 
-<div>
+<!-- <div>
     {{ form.value | json }}
-</div>
+</div> -->

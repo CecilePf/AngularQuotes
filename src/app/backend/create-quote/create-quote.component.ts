@@ -11,6 +11,7 @@ import { Quote } from '../../../quote.interface';
 })
 export class CreateQuoteComponent implements OnInit {
     form: FormGroup;
+    private active: boolean = true;
 
     @Output()
     create = new EventEmitter();
@@ -62,6 +63,14 @@ export class CreateQuoteComponent implements OnInit {
         }
         
         this.form.reset();
+
+        // Old hack pour éviter les erreurs d'affichage après soumission du formulaire
+        // Sans ça, les input required sont rouges après soumission car vides
+        // Le formulaire ne s'affichera que quand active sera true (voir vue), cela permet de la regénérer
+        this.active = false;
+        setTimeout(() => this.active = true, 0);
+        // Fin old hack
+
         this.verb = "Ajouter";
         // this.router.navigate(['']);
     }

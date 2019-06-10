@@ -1,3 +1,15 @@
-<ul>
-    <li *ngFor="let quote of quotes$ | async" (click)="showQuoteDetails(quote)">{{ quote.text }}</li>
-</ul>
+<!-- <ul>
+    <li *ngFor="let quote of quotes$ | async" (click)="showQuoteDetails(quote)">
+        {{ quote.text }}
+    </li>
+</ul> -->
+
+<mat-toolbar color="primary">Liste des citations</mat-toolbar>
+
+<a routerLink="/admin">Admin</a>
+
+<mat-list>
+    <mat-list-item *ngFor="let quote of quotes$ | async" (click)="showQuoteDetails(quote)">
+        {{ quote.text }}
+    </mat-list-item>
+</mat-list>

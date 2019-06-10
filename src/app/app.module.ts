@@ -1,19 +1,29 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AngularFireModule, FirebaseAppConfig } from '@angular/fire';
-import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
-
 import { AppComponent } from './app.component';
-import { QuotesComponent } from './quotes/quotes.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-//services
+// Material design
+import { MaterialModule } from './material.module';
+
+// firebase
+import { AngularFireModule, FirebaseAppConfig } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+
+// services
 import { QuotesService } from './services/quotes.service';
+import { AuthService } from './authentification/services/auth.service';
+
+// custom components
+import { QuotesComponent } from './quotes/quotes.component';
 import { CreateQuoteComponent } from './backend/create-quote/create-quote.component';
 import { QuoteDetailsComponent } from './quote-details/quote-details.component';
 import { BackendHomeComponent } from './backend/backend-home/backend-home.component';
 import { BackendQuotesComponent } from './backend/backend-quotes/backend-quotes.component';
+import { RegisterUserComponent } from './authentification/register-user/register-user.component';
 
 const CONFIG: FirebaseAppConfig = {
     apiKey: "AIzaSyDVqKuYzDY_48NPVAtEn_mXAnvHGPcbOtc",
@@ -38,7 +48,8 @@ const ROUTES: Routes = [
     CreateQuoteComponent,
     QuoteDetailsComponent,
     BackendHomeComponent,
-    BackendQuotesComponent
+    BackendQuotesComponent,
+    RegisterUserComponent
   ],
   imports: [
     BrowserModule,
@@ -47,9 +58,13 @@ const ROUTES: Routes = [
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(ROUTES),
+    AngularFireAuthModule,
+    BrowserAnimationsModule,
+    MaterialModule,
   ],
   providers: [
-      QuotesService
+      QuotesService,
+      AuthService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,5 +1,22 @@
-<h2>Administration</h2>
+<mat-toolbar color="primary">
+    Administration
+</mat-toolbar>
 
-<app-create-quote (create)="onQuoteCreated($event)" (update)="onQuoteUpdated($event)"></app-create-quote>
+<a routerLink="/">Accueil</a>
 
-<app-backend-quotes></app-backend-quotes>
+<mat-tab-group>
+    <mat-tab label="Users">
+        <h1>Gestion utilisateurs</h1>
+        <app-register-user></app-register-user>
+    </mat-tab>
+    <mat-tab label="Quotes">
+        <h1>Gestions des citations</h1>
+        <app-create-quote (create)="onQuoteCreated($event)" (update)="onQuoteUpdated($event)"></app-create-quote>
+        <app-backend-quotes></app-backend-quotes>
+    </mat-tab>
+</mat-tab-group>
+
+
+
+
+
