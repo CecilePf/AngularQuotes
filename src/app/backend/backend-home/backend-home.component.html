@@ -5,8 +5,12 @@
 <a routerLink="/">Accueil</a>
 
 <mat-tab-group>
-    <mat-tab label="Users">
-        <h1>Gestion utilisateurs</h1>
+    <mat-tab label="Connexion">
+        <h1>Connexion</h1>
+        <app-login></app-login>
+    </mat-tab>
+    <mat-tab label="Création de compte">
+        <h1>Création de compte</h1>
         <app-register-user></app-register-user>
     </mat-tab>
     <mat-tab label="Quotes">
@@ -15,8 +19,3 @@
         <app-backend-quotes></app-backend-quotes>
     </mat-tab>
 </mat-tab-group>
-
-
-
-
-

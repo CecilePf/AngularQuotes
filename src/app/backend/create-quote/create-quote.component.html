@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="isAdmin">
     <form [formGroup]='form' (ngSubmit)="saveQuote()" *ngIf="active">
         <mat-form-field>
             <input matInput type="text" formControlName="firstname" placeholder="Prénom de l'auteur"><br>
@@ -15,6 +15,10 @@
         <button mat-raised-button color="primary">{{ verb }}</button>
         <button mat-raised-button color="link" *ngIf='isInEditMode' (click)='cancelEdit()'>Annuler</button>
     </form>
+</div>
+
+<div *ngIf="!isAdmin">
+    <p>Veuillez vous connecter en admin.</p>
 </div>
 
 <!-- <div>

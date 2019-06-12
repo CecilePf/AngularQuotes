@@ -1,4 +1,4 @@
-<ul>
+<ul *ngIf="isAdmin">
     <li *ngFor="let quote of quotes$ | async" (click)="showQuoteDetails(quote)">
         <button mat-button color="primary" (click)="toggleToEditMode(quote)">Modifier</button>
         <button mat-button color="warn" (click)="deleteQuote(quote)">Supprimer</button>

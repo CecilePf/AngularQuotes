@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { QuotesService } from '../../services/quotes.service';
 import { Quote } from '../../../quote.interface';
+import { AuthService } from 'src/app/authentification/services/auth.service';
 
 @Component({
   selector: 'app-create-quote',
@@ -12,6 +13,7 @@ import { Quote } from '../../../quote.interface';
 export class CreateQuoteComponent implements OnInit {
     form: FormGroup;
     private active: boolean = true;
+    private isAdmin: boolean = false;
 
     @Output()
     create = new EventEmitter();
@@ -24,7 +26,8 @@ export class CreateQuoteComponent implements OnInit {
 
     constructor(private formBuilder: FormBuilder, 
         private router: Router, 
-        private quotesService: QuotesService) { }
+        private quotesService: QuotesService,
+        private authService: AuthService) { }
 
     ngOnInit() {
         this.form = this.formBuilder.group({
@@ -44,6 +47,15 @@ export class CreateQuoteComponent implements OnInit {
             this.form.get('quote').patchValue((data as Quote).text);
             this.form.get('key').patchValue((data as Quote).key);
         });
+
+        // is admin or not ?
+        this.authService.user$.subscribe(user => {
+            if (user && user.uid == 'SeynCHaMC9Qml57dI49620Ruorf1') {
+                this.isAdmin = true;
+            } else {
+                this.isAdmin = false;
+            }
+        })
     }
 
     saveQuote() {

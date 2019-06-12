@@ -1,0 +1,25 @@
+<div *ngIf="!(authService.user$ | async)">
+    <h3>Connexion</h3>
+
+    <div>
+        <form #login="ngForm" (ngSubmit)="loginUser()">
+            <mat-form-field class="space">
+                <input matInput type="text" name="email" placeholder="Votre email" [(ngModel)]="existingUser.email">
+            </mat-form-field>
+            
+            <mat-form-field class="space">
+                <input matInput type="password" name="password" placeholder="Votre mot de passe" [(ngModel)]="existingUser.password">
+            </mat-form-field>
+            
+            <button mat-raised-button color="primary" type="submit">Connexion</button>
+        </form>
+    </div>
+</div>
+
+<!-- Grâce au ?, on n'accède à (authService.user$ | async).email que si l'observable est disponible -->
+<span *ngIf="authService.user$ | async">Connecté(e) en tant que {{ (authService.user$ | async)?.email }}</span>
+<br>
+<button mat-button color="warn" type="button" (click)="logoutUser()" *ngIf="authService.user$ | async">Déconnexion</button>
+
+<!-- Envoi d'email de vérification firebase // TEST -->
+<button mat-button color="primary" (click)="authService.sendEmailVerification()" *ngIf="authService.user$ | async">Envoyer un email de confirmation</button>

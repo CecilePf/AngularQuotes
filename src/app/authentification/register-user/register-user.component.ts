@@ -9,7 +9,6 @@ import { AuthService } from '../services/auth.service';
 export class RegisterUserComponent implements OnInit {
 
     newUser = {email: '', password: ''};
-    existingUser = {email: '', password: ''};
 
     // public car on souhaite utiliser le service dans le template
     constructor(public authService: AuthService) { }
@@ -27,20 +26,6 @@ export class RegisterUserComponent implements OnInit {
         .catch(error => {
             console.log('error', error.message);
         });
-    }
-
-    loginUser() {
-        this.authService.login(this.existingUser.email, this.existingUser.password)
-        .then(value => {
-            console.log('login réussi', value);
-        })
-        .catch(error => {
-            console.log('erreur', error.message);
-        });
-    }
-
-    logoutUser() {
-        this.authService.logout();
     }
 
 }

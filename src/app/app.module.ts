@@ -24,6 +24,7 @@ import { QuoteDetailsComponent } from './quote-details/quote-details.component';
 import { BackendHomeComponent } from './backend/backend-home/backend-home.component';
 import { BackendQuotesComponent } from './backend/backend-quotes/backend-quotes.component';
 import { RegisterUserComponent } from './authentification/register-user/register-user.component';
+import { LoginComponent } from './authentification/login/login.component';
 
 const CONFIG: FirebaseAppConfig = {
     apiKey: "AIzaSyDVqKuYzDY_48NPVAtEn_mXAnvHGPcbOtc",
@@ -49,7 +50,8 @@ const ROUTES: Routes = [
     QuoteDetailsComponent,
     BackendHomeComponent,
     BackendQuotesComponent,
-    RegisterUserComponent
+    RegisterUserComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
